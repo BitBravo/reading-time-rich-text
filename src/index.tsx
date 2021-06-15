@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 
 import {
   FieldExtensionSDK,
+  SidebarExtensionSDK,
   init,
   locations,
 } from '@contentful/app-sdk';
@@ -12,6 +13,7 @@ import '@contentful/forma-36-tokens/dist/css/index.css';
 import './index.css';
 
 import Field from './components/Field';
+import Sidebar from "./components/Sidebar";
 
 import LocalhostWarning from './components/LocalhostWarning';
 
@@ -25,6 +27,10 @@ if (process.env.NODE_ENV === 'development' && window.self === window.top) {
       {
         location: locations.LOCATION_ENTRY_FIELD,
         component: <Field sdk={sdk as FieldExtensionSDK} />,
+      },
+      {
+        location: locations.LOCATION_ENTRY_SIDEBAR,
+        component: <Sidebar sdk={sdk as SidebarExtensionSDK} />,
       },
     ];
 
