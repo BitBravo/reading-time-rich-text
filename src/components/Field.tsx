@@ -38,7 +38,7 @@ const Field = (props: FieldProps) => {
       const newReadingTime = readingTime(totalStringList);
 
       if (newReadingTime !== readTime) {
-        console.log("new reading time", newReadingTime)
+        console.log("updated reading time", newReadingTime)
         contentField.setValue(newReadingTime);
         readTime = newReadingTime;
         // setReadTime(newReadingTime);
