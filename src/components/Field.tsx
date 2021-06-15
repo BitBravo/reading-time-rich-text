@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import readingTime from "reading-time"; // eslint-disable-this-line
-import { Paragraph, Subheading } from '@contentful/forma-36-react-components';
+import { Typography, Subheading } from '@contentful/forma-36-react-components';
 import { FieldExtensionSDK } from '@contentful/app-sdk';
 import { CONTENT_FIELD_ID } from '../config';
 
@@ -45,7 +45,7 @@ const Field = (props: FieldProps) => {
 
   return (
     <div>
-      <Paragraph>Reading time for Body Field</Paragraph>
+      <Typography>For body field</Typography>
       <Subheading>Total Words: {readTime.words}</Subheading>
       <Subheading>Reading time: {readTime.text}</Subheading>
     </div>
