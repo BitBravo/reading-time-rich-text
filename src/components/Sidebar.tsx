@@ -38,7 +38,6 @@ const Sidebar = (props: SidebarProps) => {
       const newReadingTime = readingTime(totalStringList);
 
       if (newReadingTime !== readTime) {
-        contentField.setValue(newReadingTime);
         setReadTime(newReadingTime);
       }
     });

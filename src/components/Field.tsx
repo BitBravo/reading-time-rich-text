@@ -20,8 +20,9 @@ const findAllByKey = (obj: object, keyToFind: string): any => {
 
 const Field = (props: FieldProps) => {
   const { sdk } = props;
+  const targetEl = sdk.field;
   const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-  const [readTime, setReadTime] = useState(contentField?.getValue());
+  const [readTime, setReadTime] = useState(targetEl?.getValue());
   
   console.log("old read time", contentField?.getValue())
   useEffect(() => {
@@ -32,20 +33,19 @@ const Field = (props: FieldProps) => {
   }, [sdk.window]);
 
   useEffect(() => {
-    if(!contentField) return;
-
     const detach = contentField.onValueChanged((value) => {
+      console.log
       const totalStringList = findAllByKey(value, 'value').filter((e: string) => e).join(' ');
       const newReadingTime = readingTime(totalStringList);
 
       if (newReadingTime !== readTime) {
-        console.log("new reading time", newReadingTime)
-        contentField.setValue(newReadingTime);
+        console.log("updated reading time", newReadingTime)
+        targetEl.setValue(newReadingTime);
         setReadTime(newReadingTime);
       }
     });
     return () => detach();
-  }, []); // eslint-disable-line 
+  }, [contentField]); // eslint-disable-line 
 
 
   return (
