@@ -21,7 +21,8 @@ const findAllByKey = (obj: object, keyToFind: string): any => {
 const Sidebar = (props: SidebarProps) => {
   const { sdk } = props;
   const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-  const [readTime, setReadTime] = useState(contentField?.getValue());
+  let readTime = contentField?.getValue();
+  // const [readTime, setReadTime] = useState(contentField?.getValue());
 
 
   useEffect(() => {
@@ -37,12 +38,13 @@ const Sidebar = (props: SidebarProps) => {
       const newReadingTime = readingTime(totalStringList);
 
       if (newReadingTime !== readTime) {
+        readTime = newReadingTime;
         contentField.setValue(newReadingTime);
-        setReadTime(newReadingTime);
+        // setReadTime(newReadingTime);
       }
     });
     return () => detach();
-  }, [contentField]); // eslint-disable-line 
+  }, []); // eslint-disable-line 
 
   return (
     <>

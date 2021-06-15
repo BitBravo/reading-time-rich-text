@@ -21,7 +21,9 @@ const findAllByKey = (obj: object, keyToFind: string): any => {
 const Field = (props: FieldProps) => {
   const { sdk } = props;
   const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-  const [readTime, setReadTime] = useState(contentField?.getValue());
+  let readTime = contentField?.getValue();
+  // const [readTime, setReadTime] = useState(contentField?.getValue());
+
   console.log("old read time", contentField?.getValue())
   useEffect(() => {
     sdk.window.startAutoResizer();
@@ -38,11 +40,12 @@ const Field = (props: FieldProps) => {
       if (newReadingTime !== readTime) {
         console.log("new reading time", newReadingTime)
         contentField.setValue(newReadingTime);
-        setReadTime(newReadingTime);
+        readTime = newReadingTime;
+        // setReadTime(newReadingTime);
       }
     });
     return () => detach();
-  }, [contentField]); // eslint-disable-line 
+  }, []); // eslint-disable-line 
 
 
   return (
