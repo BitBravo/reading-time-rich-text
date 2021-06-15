@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create Contentful App](https://github.com/contentful/create-contentful-app).
 
-## Available Scripts
+## Reading Time field and sidebar extension for Contentful RichText
 
 In the project directory, you can run:
 
@@ -22,10 +22,13 @@ Your app is ready to be deployed!
 
 ## Libraries to use
 
-To make your app look and feel like Contentful use the following libraries:
+- npx @contentful/create-contentful-app create-definition
+- Goto contentful/Apps/Manage apps
+- Config new apps and install this apps into specific space.
+- Create new rich text field which named "body"
+- Create new JSON field which stores the reading time and set new application in the appearance.
 
-- [Forma 36](https://f36.contentful.com/) – Contentful's design system
-- [Contentful Field Editors](https://www.contentful.com/developers/docs/extensibility/field-editors/) – Contentful's field editor React components
+ If you udatae the body field in the editor, then it will caculate the reading times and updates the JSON field.
 
 ## Learn More
 

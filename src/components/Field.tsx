@@ -22,8 +22,8 @@ const Field = (props: FieldProps) => {
   const { sdk } = props;
   const targetEl = sdk.field;
   const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-  const [readTime, setReadTime] = useState(targetEl?.getValue());
-  
+  const [readTime, setReadTime] = useState(targetEl?.getValue() || {});
+
   console.log("old read time", contentField?.getValue())
   useEffect(() => {
     sdk.window.startAutoResizer();
@@ -50,8 +50,8 @@ const Field = (props: FieldProps) => {
   return (
     <div>
       <Typography>For body field</Typography>
-      <Subheading>Total Words: {readTime.words}</Subheading>
-      <Subheading>Reading time: {readTime.text}</Subheading>
+      <Subheading>Total Words: {readTime?.words}</Subheading>
+      <Subheading>Reading time: {readTime?.text}</Subheading>
     </div>
   )
 };
