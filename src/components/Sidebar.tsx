@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { List, ListItem, Note } from "@contentful/forma-36-react-components";
 import { SidebarExtensionSDK } from "@contentful/app-sdk";
 import readingTime from "reading-time";
@@ -21,8 +21,7 @@ const findAllByKey = (obj: object, keyToFind: string): any => {
 const Sidebar = (props: SidebarProps) => {
   const { sdk } = props;
   const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-  let readTime = contentField?.getValue();
-  // const [readTime, setReadTime] = useState(contentField?.getValue());
+  const [readTime, setReadTime] = useState(contentField?.getValue());
 
 
   useEffect(() => {
@@ -33,14 +32,14 @@ const Sidebar = (props: SidebarProps) => {
   }, [sdk.window]);
 
   useEffect(() => {
+    if(!contentField) return;
     const detach = contentField.onValueChanged((value) => {
       const totalStringList = findAllByKey(value, 'value').filter((e: string) => e).join(' ');
       const newReadingTime = readingTime(totalStringList);
 
       if (newReadingTime !== readTime) {
-        readTime = newReadingTime;
         contentField.setValue(newReadingTime);
-        // setReadTime(newReadingTime);
+        setReadTime(newReadingTime);
       }
     });
     return () => detach();

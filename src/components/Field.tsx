@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import readingTime from "reading-time"; // eslint-disable-this-line
 import { Typography, Subheading } from '@contentful/forma-36-react-components';
 import { FieldExtensionSDK } from '@contentful/app-sdk';
@@ -21,9 +21,8 @@ const findAllByKey = (obj: object, keyToFind: string): any => {
 const Field = (props: FieldProps) => {
   const { sdk } = props;
   const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-  let readTime = contentField?.getValue();
-  // const [readTime, setReadTime] = useState(contentField?.getValue());
-
+  const [readTime, setReadTime] = useState(contentField?.getValue());
+  
   console.log("old read time", contentField?.getValue())
   useEffect(() => {
     sdk.window.startAutoResizer();
@@ -33,15 +32,16 @@ const Field = (props: FieldProps) => {
   }, [sdk.window]);
 
   useEffect(() => {
+    if(!contentField) return;
+
     const detach = contentField.onValueChanged((value) => {
       const totalStringList = findAllByKey(value, 'value').filter((e: string) => e).join(' ');
       const newReadingTime = readingTime(totalStringList);
 
       if (newReadingTime !== readTime) {
-        console.log("updated reading time", newReadingTime)
+        console.log("new reading time", newReadingTime)
         contentField.setValue(newReadingTime);
-        readTime = newReadingTime;
-        // setReadTime(newReadingTime);
+        setReadTime(newReadingTime);
       }
     });
     return () => detach();
