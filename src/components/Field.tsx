@@ -34,7 +34,7 @@ const Field = (props: FieldProps) => {
     const detach = contentField.onValueChanged((value) => {
       const totalStringList = findAllByKey(value, 'value').filter((e: string) => e).join(' ');
       const newReadingTime = readingTime(totalStringList);
-      console.log(findAllByKey(value, 'value').filter((e: string) => e))
+
       if (newReadingTime !== readTime) {
         setReadTime(newReadingTime);
       }
