@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { List, ListItem, Note } from "@contentful/forma-36-react-components";
 import { SidebarExtensionSDK } from "@contentful/app-sdk";
 import readingTime from "reading-time";

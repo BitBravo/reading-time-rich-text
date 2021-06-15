@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import readingTime from "reading-time"; // eslint-disable-this-line
 import { Typography, Subheading } from '@contentful/forma-36-react-components';
 import { FieldExtensionSDK } from '@contentful/app-sdk';
