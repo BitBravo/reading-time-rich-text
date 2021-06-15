@@ -22,7 +22,7 @@ const Field = (props: FieldProps) => {
   const { sdk } = props;
   const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
   const [readTime, setReadTime] = useState(contentField?.getValue());
-
+  console.log("old read time", contentField?.getValue())
   useEffect(() => {
     sdk.window.startAutoResizer();
     return () => {
@@ -36,6 +36,8 @@ const Field = (props: FieldProps) => {
       const newReadingTime = readingTime(totalStringList);
 
       if (newReadingTime !== readTime) {
+        console.log("new reading time", newReadingTime)
+        contentField.setValue(newReadingTime);
         setReadTime(newReadingTime);
       }
     });
