@@ -12,6 +12,8 @@ Open your app to view it in the browser.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
+Demo: https://www.loom.com/share/d5bab33027f1460487f3899e551c597e
+
 #### `npm run build`
 
 Builds the app for production to the `build` folder.
@@ -29,6 +31,8 @@ Your app is ready to be deployed!
 - Create new JSON field which stores the reading time and set new application in the appearance.
 
  If you udatae the body field in the editor, then it will caculate the reading times and updates the JSON field.
+ Live App URL:  https://reading-time-rich-text-contentful.netlify.app
+ You can use this app directly.
 
 ## Learn More
 
