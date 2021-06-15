@@ -46,7 +46,7 @@ const Sidebar = (props: SidebarProps) => {
   return (
     <>
       <Note style={{ marginBottom: "12px" }}>
-        Metrics for your blog post:
+        Blog Reading Time (Body):
         <List style={{ marginTop: "12px" }}>
           <ListItem>Word count: {readTime.words}</ListItem>
           <ListItem>Reading time: {readTime.text}</ListItem>
